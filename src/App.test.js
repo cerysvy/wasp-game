@@ -1,15 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-//testing core engine of the game...
-
-//test shoot method reduces score on a wasp
-//check 0 health => dead?
-//check queen dies all die
-//check all die game over
+  test('start button takes us to wasp game', () => {
+    render(<App />);
+    const startButton = screen.getByText(/start/i);
+    fireEvent.click(startButton);
+    const queenWaspScore = screen.getByText(/80/i);
+    expect(queenWaspScore).toBeInTheDocument();
+  });
