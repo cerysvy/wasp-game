@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./index.css";
 
 const App = () => {
 
@@ -13,15 +14,17 @@ const App = () => {
   function setUpWasps() {
     const queen = {
       name: "Queen",
+      img: "./queen.png",
       health: 80,
       alive: true,
+      className: "queenStyles"
     };
     const drones = new Array(8)
       .fill(null)
-      .map(() => ({ name: "Drone", health: 60, alive: true }));
+      .map(() => ({ name: "Drone", img: "./drone.png", health: 60, alive: true, className: "droneStyles" }));
     const workers = new Array(5)
       .fill(null)
-      .map(() => ({ name: "Worker", health: 68, alive: true }));
+      .map(() => ({ name: "Worker", img: "./worker.png", health: 68, alive: true, className: "workerStyles" }));
     const waspNest = [...drones, queen, ...workers];
     setWaspsNestArr(waspNest);
   };
@@ -73,20 +76,47 @@ const App = () => {
   };
 
 const DisplayWasps = () => {
+  // let aliveWasps = waspsNestArr.filter((wasp) => wasp.alive);
+  // if (aliveWasps.length > 0) {
+  //   return(aliveWasps.map((wasp, index) => (
+  //     <>
+  //     {alive.wasps.map((wasp, index) => (
+  //       <div>
+  //         <p key={index}>
+  //           {wasp.health}
+  //         </p>
+  //         <img src={`src/img/${wasp.name}.png`}/>
+  //       </div>
+  //     ))}
+  //     <button onClick={gameTurn}>
+  //       Shoot
+  //     </button>
+  //     </>
+  //   )))
+  // }
   if (waspsNestArr.filter((wasp) => wasp.alive).length > 0) {
-    return (
+    let aliveWasps = waspsNestArr.filter((wasp) => wasp.alive)
+    if (aliveWasps.length > 0) {
+      return (
       <>
-        {waspsNestArr
-          .filter((wasp) => wasp.alive === true)
+        {aliveWasps
           .map((wasp, index) => (
-            <p key={index}>
-              {wasp.name} - {wasp.health}
-            </p>
+            <div  className={styles.backgroundContainer}>
+              <div className={wasp.className}>
+                <p key={index}>
+                  {wasp.health}
+                </p>
+              <img src={wasp.img} width="50" height="50" />
+              </div>
+
+            </div>
           ))}
+
+
         <button onClick={gameTurn}>Shoot</button>
       </>
-    );
-  } else {
+    )}
+    } else {
     return (
       <>
         <p>Game Over</p>

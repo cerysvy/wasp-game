@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.backgroundContainer {
+border: 10px solid aqua;
+}
+
+div {
+display: flex;
+flex-wrap: wrap;
+}
+
+img {
+  margin: 10px;
+}
+
+.droneStyles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid rebeccapurple;
+}
+
+.queenStyles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid pink;
+}
+
+.workerStyles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid blue;
+}
+
+
+p {
+  width: 25px;
+  border: 5px solid red;
+  align-items: centre;
+  color: grey;
+}
